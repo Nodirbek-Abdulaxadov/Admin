@@ -32,6 +32,13 @@
           (submit)="add()"
           class="modal-body"
         >
+        <div class="mb-1 mt-3">
+          <label class="form-label">Kategoriyasi</label>
+          <select class="form-select" formControlName="categoryId">
+            <option value="{{category.id}}" *ngFor="let category of categories | async">{{category.name}}</option>
+          </select>
+          <div *ngIf="categoryId.errors?.['required']" class="form-text text-danger">Kategoriyani tanlang!</div>            
+        </div>
           <div class="mb-5 mt-3">
             <label class="form-label">Nomi</label>
             <input
@@ -114,6 +121,7 @@
                   >
                     <i class="bi bi-trash-fill m-0 p-0"></i>
                   </button>
+                  <!--O'chirish modal-->
                   <div class="col">
                     <!-- Modal -->
                     <div
@@ -165,7 +173,7 @@
           </tbody>
         </table>
         <div class="col">
-          <!-- Modal -->
+          <!-- tahrirlash Modal -->
           <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
@@ -179,6 +187,13 @@
                   ></button>
                 </div>
                 <form class="modal-body" (submit)="edit()">
+                  <div class="mb-1 mt-3">
+                    <label class="form-label">Kategoriyasi</label>
+                    <select class="form-select" id="category">
+                      <option value="{{category.id}}" *ngFor="let category of categories | async">{{category.name}}</option>
+                    </select>
+                    <div *ngIf="categoryId.errors?.['required']" class="form-text text-danger">Kategoriyani tanlang!</div>            
+                  </div>
                   <div class="mb-5 mt-3">
                     <label class="form-label">Nomi</label>
                     <input type="text" class="form-control" id="categoryName" (keydown)="check()" />
@@ -196,7 +211,6 @@
                       type="submit"
                       class="btn btn-primary"
                       data-bs-dismiss="modal"
-                      [disabled]="!nameValid"
                     >
                       Saqlash
                     </button>

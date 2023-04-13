@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { Category } from 'src/app/models/Category';
 import { Pagination } from 'src/app/models/Pagination';
 import { Subcategory } from 'src/app/models/Subcategory';
+import { CategoryService } from 'src/app/services/category/category.service';
 import { SubcategoryService } from 'src/app/services/subcategory/subcategory.service';
 
 @Component({
@@ -12,16 +14,19 @@ import { SubcategoryService } from 'src/app/services/subcategory/subcategory.ser
 })
 export class SubcategoryComponent {
   subcategories: Observable<Subcategory[]> | undefined;
+  categories: Observable<Category[]> | undefined;
   nameField: any;
   subcategory: any;
   nameValid: boolean = false;
   public pagination: Pagination | undefined;
 
   constructor(private subcategoryService: SubcategoryService,           
-              private formBuilder: FormBuilder,){}
+              private formBuilder: FormBuilder,
+              private categoryService: CategoryService){}
 
   ngOnInit(): void {
     this.subcategories = this.subcategoryService.getPaged(1);
+    this.categories = this.categoryService.getAll();
     this.pagination = this.subcategoryService.pagination;
   }
   name = new FormControl('', [
@@ -30,8 +35,14 @@ export class SubcategoryComponent {
     Validators.maxLength(100)
   ]);
 
+  categoryId = new FormControl('', [
+    Validators.required,
+    Validators.nullValidator
+  ]);
+
   public addNewForm = this.formBuilder.group({
-    name: this.name
+    name: this.name,
+    categoryId: this.categoryId
   });
 
   add() {
@@ -50,6 +61,17 @@ export class SubcategoryComponent {
       this.subcategory = model;
       var name = document.getElementById('categoryName');
       name?.setAttribute('value', model.name);
+
+      var select = document.getElementById('category') as HTMLSelectElement;
+      var option;
+
+      for (var i=0; i<select!.options.length; i++) {
+        option = select!.options[i];
+
+        if (option.value == model.categoryId.toString()) {
+          option.setAttribute('selected', 'true');
+        } 
+      }
   }
 
   check() {
@@ -64,6 +86,15 @@ export class SubcategoryComponent {
 
   edit() {
     this.subcategory.name = (document.getElementById('categoryName') as HTMLInputElement).value;
+    var select = document.getElementById('category') as HTMLSelectElement;
+      var option;
+
+      for (var i=0; i<select!.options.length; i++) {
+        option = select!.options[i];
+        if (option.value == this.subcategory.categoryId.toString()) {
+          this.subcategory.categoryId = Number(option.value)
+        } 
+      }
     this.subcategoryService.edit(this.subcategory)
   }
 

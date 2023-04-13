@@ -71,12 +71,12 @@ export class SubcategoryService {
     });
   }
 
-  edit(warehouse: Subcategory) {
+  edit(subcategory: Subcategory) {
     const headers = new HttpHeaders().set(
       'Authorization',
       `Bearer ${this.getToken()}`
     );
-    this.httpClient.put(this.baseUrl, warehouse, { headers }).subscribe({
+    this.httpClient.put(this.baseUrl, subcategory, { headers }).subscribe({
       next: (data) => {
         this.toastr
           .success('Muvofaqqiyatli saqlandi!')

@@ -32,8 +32,8 @@
                    <div class="d-flex align-items-center">
                       <img src="assets/images/admin.png" alt="" class="rounded-circle" width="54" height="54">
                       <div class="ms-3">
-                        <h6 class="mb-0 dropdown-user-name">Jhon Deo</h6>
-                        <small class="mb-0 dropdown-user-designation text-secondary">HR Manager</small>
+                        <h6 class="mb-0 dropdown-user-name">{{userName}}</h6>
+                        <small class="mb-0 dropdown-user-designation text-secondary">{{role}}</small>
                       </div>
                    </div>
                  </a>
@@ -321,39 +321,23 @@
             </a>
           </li>
           <li>
-            <a routerLink="/warehouse">
+            <a href="javascript:;" class="has-arrow">
               <div class="parent-icon"><i class="bi bi-house-fill"></i>
               </div>
-              <div class="menu-title">Omborlar</div>
+              <div class="menu-title">Omborni boshqarish</div>
             </a>
-          </li>
-          <li>
-            <a routerLink="/category">
-              <div class="parent-icon"><i class="bi bi-menu-button-wide"></i>
-              </div>
-              <div class="menu-title">Kategoriyalar</div>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/subcategory">
-              <div class="parent-icon"><i class="bi bi-bar-chart-steps"></i>
-              </div>
-              <div class="menu-title">Subkategoriyalar</div>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/product">
-              <div class="parent-icon"><i class="bi bi-bag-fill"></i>
-              </div>
-              <div class="menu-title">Mahsulotlar</div>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/product">
-              <div class="parent-icon"><i class="bi bi-bag-plus-fill"></i>
-              </div>
-              <div class="menu-title">Sotib olish</div>
-            </a>
+            <ul>
+              <li> <a routerLink="/warehouse"><i class="bi bi-house-fill"></i>Omborlar</a>
+              </li>
+              <li> <a routerLink="/category"><i class="bi bi-menu-button-wide"></i>Kategoriyalar</a>
+              </li>
+              <li> <a routerLink="/subcategory"><i class="bi bi-bar-chart-steps"></i>Subkategoriyalar</a>
+              </li>
+              <li> <a routerLink="/product"><i class="bi bi-bag-fill"></i>Mahsulotlar</a>
+              </li>
+              <li> <a routerLink="/product"><i class="bi bi-bag-plus-fill"></i>Kirimlar</a>
+              </li>
+            </ul>
           </li>
           <li>
             <a href="javascript:;" class="has-arrow">

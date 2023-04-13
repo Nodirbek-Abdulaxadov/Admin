@@ -12,6 +12,8 @@ import { WarehouseComponent } from './components/warehouse/warehouse.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CategoryComponent } from './components/category/category.component';
 import { SubcategoryComponent } from './components/subcategory/subcategory.component';
+import { ProductComponent } from './components/product/product.component';
+import { NewProductComponent } from './components/product/new-product/new-product.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SubcategoryComponent } from './components/subcategory/subcategory.compo
     WarehouseComponent,
     LoginComponent,
     CategoryComponent,
-    SubcategoryComponent
+    SubcategoryComponent,
+    ProductComponent,
+    NewProductComponent
   ],
   imports: [
     BrowserModule,
