@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/models/Category';
@@ -22,12 +22,14 @@ export class SubcategoryComponent {
 
   constructor(private subcategoryService: SubcategoryService,           
               private formBuilder: FormBuilder,
-              private categoryService: CategoryService){}
+              private categoryService: CategoryService,
+              private cdr: ChangeDetectorRef){}
 
   ngOnInit(): void {
     this.subcategories = this.subcategoryService.getPaged(1);
     this.categoryService.getAll().subscribe(data => this.categories = data);
     this.pagination = this.subcategoryService.pagination;
+    this.cdr.detectChanges();
   }
   name = new FormControl('', [
     Validators.required,
