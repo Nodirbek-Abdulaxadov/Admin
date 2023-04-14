@@ -35,7 +35,7 @@
         <div class="mb-1 mt-3">
           <label class="form-label">Kategoriyasi</label>
           <select class="form-select" formControlName="categoryId">
-            <option value="{{category.id}}" *ngFor="let category of categories | async">{{category.name}}</option>
+            <option value="{{category.id}}" *ngFor="let category of categories">{{category.name}}</option>
           </select>
           <div *ngIf="categoryId.errors?.['required']" class="form-text text-danger">Kategoriyani tanlang!</div>            
         </div>
@@ -190,7 +190,7 @@
                   <div class="mb-1 mt-3">
                     <label class="form-label">Kategoriyasi</label>
                     <select class="form-select" id="category">
-                      <option value="{{category.id}}" *ngFor="let category of categories | async">{{category.name}}</option>
+                      <option value="{{category.id}}" *ngFor="let category of categories">{{category.name}}</option>
                     </select>
                     <div *ngIf="categoryId.errors?.['required']" class="form-text text-danger">Kategoriyani tanlang!</div>            
                   </div>

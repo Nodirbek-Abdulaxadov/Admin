@@ -14,7 +14,7 @@ import { SubcategoryService } from 'src/app/services/subcategory/subcategory.ser
 })
 export class SubcategoryComponent {
   subcategories: Observable<Subcategory[]> | undefined;
-  categories: Observable<Category[]> | undefined;
+  categories: Category[] = [];
   nameField: any;
   subcategory: any;
   nameValid: boolean = false;
@@ -26,7 +26,7 @@ export class SubcategoryComponent {
 
   ngOnInit(): void {
     this.subcategories = this.subcategoryService.getPaged(1);
-    this.categories = this.categoryService.getAll();
+    this.categoryService.getAll().subscribe(data => this.categories = data);
     this.pagination = this.subcategoryService.pagination;
   }
   name = new FormControl('', [
