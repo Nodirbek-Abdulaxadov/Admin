@@ -48,6 +48,12 @@ export class LoginService {
                     localStorage.clear();
                     this.toastr.error("Token expired!")
                   } break;
+                  case 0: {
+                    this.toastr.error("Internal server error!", '', {
+                      timeOut: 3000,
+                    });
+                    //this.router.navigate(['/server-error']); 
+                  }break;
                 }
               }}
           );
@@ -62,7 +68,6 @@ export class LoginService {
            localStorage.setItem("data", JSON.stringify(data));
            this.toastr.success('Successfully logged in!');
            localStorage.setItem('loggedDate', this.date2.toString())
-           //this.router.navigate(['/']);
        },
        error: error => {
          console.log(error);
@@ -72,7 +77,12 @@ export class LoginService {
              }break;
              case 401: 
              this.toastr.error("Telefon raqam yoki parol noto'g'ri kiritilgan!"); break;
-             //case 0: this.router.navigate(['/server-error']); break;
+             case 0: {
+              this.toastr.error("Internal server error!", '', {
+                timeOut: 3000,
+              });
+              //this.router.navigate(['/server-error']); 
+            }break;
            }
        }}
    );

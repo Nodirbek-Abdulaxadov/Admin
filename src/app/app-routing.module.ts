@@ -7,10 +7,14 @@ import { CategoryComponent } from './components/category/category.component';
 import { SubcategoryComponent } from './components/subcategory/subcategory.component';
 import { ProductComponent } from './components/product/product.component';
 import { NewProductComponent } from './components/product/new-product/new-product.component';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: '**', component: NotFoundComponent},
   {path: 'warehouse', component: WarehouseComponent},
+  {path: 'server-error', component: ServerErrorComponent},
   {path: 'category', component: CategoryComponent},
   {path: 'subcategory', component: SubcategoryComponent},
   {path: 'product', component: ProductComponent},
