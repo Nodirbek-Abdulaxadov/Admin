@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, map } from 'rxjs';
 import { Category } from 'src/app/models/Category';
+import { Constants } from 'src/app/models/Constants';
 import { Pagination } from 'src/app/models/Pagination';
 
 @Injectable({
@@ -11,7 +12,7 @@ import { Pagination } from 'src/app/models/Pagination';
 export class CategoryService {
   constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
 
-  baseUrl: string = 'https://localhost:44367/api/category/';
+  baseUrl: string = Constants.BASE_URL + "category/";
 
   public pagination: Pagination = {
     HasPrevious: false,

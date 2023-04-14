@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Constants } from 'src/app/models/Constants';
 import { Pagination } from 'src/app/models/Pagination';
 import { Warehouse } from 'src/app/models/warehouse';
 
@@ -14,7 +15,7 @@ export class WarehouseService {
   constructor(private httpClient: HttpClient,
               private toastr: ToastrService) { }
 
-  baseUrl: string ="https://localhost:44367/api/warehouse/";
+  baseUrl: string = Constants.BASE_URL + "warehouse/";
 
   public pagination: Pagination = {
     HasPrevious: false,

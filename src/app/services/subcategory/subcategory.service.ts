@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, map } from 'rxjs';
+import { Constants } from 'src/app/models/Constants';
 import { Pagination } from 'src/app/models/Pagination';
 import { Subcategory } from 'src/app/models/Subcategory';
 
@@ -12,7 +13,7 @@ export class SubcategoryService {
   constructor(private httpClient: HttpClient, 
               private toastr: ToastrService) {}
 
-  baseUrl: string = 'https://localhost:44367/api/subcategory/';
+  baseUrl: string = Constants.BASE_URL + "subcategory/";
 
   public pagination: Pagination = {
     HasPrevious: false,
