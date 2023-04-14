@@ -35,8 +35,8 @@ export class LoginService {
               { next: data => {
                   localStorage.clear();
                   localStorage.setItem("data", JSON.stringify(data));
-                  localStorage.setItem('loggedDate', this.date2.toString())
-                  this.toastr.success("Token updated!")
+                  localStorage.setItem('loggedDate', this.date2.toString());
+                  this.toastr.success('Token updated!');
               },
               error: error => {
                 switch(error.status) {
