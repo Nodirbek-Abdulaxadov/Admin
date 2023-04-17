@@ -1,0 +1,1 @@
+{"ast":null,"code":"export let Constants = /*#__PURE__*/(() => {\n  class Constants {}\n  Constants.BASE_URL = \"https://localhost:44367/api/\";\n  return Constants;\n})();","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
