@@ -1,0 +1,8 @@
+<div class="container d-flex justify-content-center links">
+    <a class="btn btn-secondary" (click)="back()"><i class="bi bi-arrow-left me-2"></i> Orqaga</a>
+    <a class="btn btn-primary" (click)="print()"><i class="bi bi-printer-fill me-2"></i> Print</a>
+</div>
+
+<div id="printBody">
+    <img class="image" *ngFor="let i of [].constructor(65)" [src]="src" alt="">
+</div>

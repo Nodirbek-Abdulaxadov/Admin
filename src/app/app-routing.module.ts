@@ -9,6 +9,7 @@ import { ProductComponent } from './components/product/product.component';
 import { NewProductComponent } from './components/product/new-product/new-product.component';
 import { ServerErrorComponent } from './pages/server-error/server-error.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { PrintComponent } from './pages/print/print.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'subcategory', component: SubcategoryComponent},
   {path: 'product', component: ProductComponent},
   {path: 'product/add', component: NewProductComponent},
+  {path: 'print/:barcode', component: PrintComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', component: NotFoundComponent}
 ];

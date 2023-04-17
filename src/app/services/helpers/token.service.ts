@@ -15,7 +15,6 @@ export class TokenService {
   }
 
   getUserId() {
-    console.log(this.getDecodedAccessToken())
     return this.getDecodedAccessToken()['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
   }
 

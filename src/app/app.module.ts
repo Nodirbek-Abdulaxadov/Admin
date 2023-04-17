@@ -16,6 +16,7 @@ import { ProductComponent } from './components/product/product.component';
 import { NewProductComponent } from './components/product/new-product/new-product.component';
 import { ServerErrorComponent } from './pages/server-error/server-error.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { PrintComponent } from './pages/print/print.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     ProductComponent,
     NewProductComponent,
     ServerErrorComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PrintComponent
   ],
   imports: [
     BrowserModule,

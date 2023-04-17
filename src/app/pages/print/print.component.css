@@ -1,0 +1,20 @@
+#printBody {
+  display: flex;
+  flex-wrap: wrap;
+  width: 210mm; /* A4 paper width */
+  height: 297mm; /* A4 paper height */
+  padding: 1mm; /* 10mm margin around the paper */
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.image {
+  width: calc(39mm - 5mm); /* 4 images in a row with 5mm gutter */
+  margin: 1mm 2mm;
+  object-fit: cover;
+}
+
+.links a {
+  width: 130px;
+  margin: 0px 5px;
+}

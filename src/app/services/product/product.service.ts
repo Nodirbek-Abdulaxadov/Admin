@@ -5,6 +5,8 @@ import { Observable, map } from 'rxjs';
 import { Constants } from 'src/app/models/Constants';
 import { Pagination } from 'src/app/models/Pagination';
 import { Product } from 'src/app/models/Product';
+import { TokenService } from '../helpers/token.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,9 @@ import { Product } from 'src/app/models/Product';
 export class ProductService {
 
   constructor(private httpClient: HttpClient, 
-              private toastr: ToastrService) {}
+              private toastr: ToastrService,
+              private tokenService: TokenService,
+              private router: Router) {}
 
   baseUrl: string = Constants.BASE_URL + "product/";
 
@@ -50,6 +54,37 @@ export class ProductService {
         return warehouses;
       })
     );
+  }
+
+  add(form: any) {
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()}`
+    );
+    form.adminId = this.tokenService.getUserId()
+    this.httpClient.post(this.baseUrl, form, { headers }).subscribe({
+      next: (data) => {
+        this.toastr
+          .success("Muvofaqqiyatli qo'shildi!")
+          .onHidden.subscribe(() => {
+            this.router.navigate(['/product'])
+          });
+      },
+      error: (error) => {
+        this.toastr.error('Qandaydir xatolik yuz berdi!', '', {
+          timeOut: 3000,
+        });
+      },
+    });
+    localStorage.setItem('barcode', '');
+  }
+
+  getBarcode(): Observable<string> {
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()}`
+    );
+    return this.httpClient.get<string>(this.baseUrl + 'barcodes/random', { headers });
   }
 
   initPaginationParams(xpagination: any): void {

@@ -7,6 +7,8 @@ export interface Product {
     warningCount: number;
     subcategoryId: number;
     subcategoryName: string;
+    categoryId: number;
+    categoryName: string;
     adminId: string;
     adminFullName: string;
 }

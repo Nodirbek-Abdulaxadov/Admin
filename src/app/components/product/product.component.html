@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between">
-  <h4 class="mb-0 text-uppercase mt-2">Kategoriyalar jadvali</h4>
+  <h4 class="mb-0 text-uppercase mt-2">Mahsulotlar jadvali</h4>
   <a class="btn btn-success" routerLink="add">+ Yangi qo'shish</a>
 </div>
 <hr />
@@ -12,7 +12,8 @@
             <th>#Barcode</th>
             <th>Nomi</th>
             <th>Ishlab chiqarilgan</th>
-            <th>Kategoriya</th>
+            <th>Mahsulot turi</th>
+            <th>Kategoriyasi</th>
             <th>Admin</th>
             <th>Action</th>
           </tr>
@@ -21,8 +22,9 @@
           <tr *ngFor="let item of products | async">
             <td>{{ item.barcode }}</td>
             <td>{{ item.name }}</td>
-            <td>{{ item.description }}</td>
-            <td>{{ item.subcategoryName }}</td>
+            <td>{{ item.madeIn }}</td>
+            <td>{{ item.categoryName }}</td>
+            <td>{{item.subcategoryName}}</td>
             <td>{{ item.adminFullName }}</td>
             <td>
               <div class="table-actions d-flex align-items-center gap-3 fs-6">
@@ -135,7 +137,10 @@
                     <br />
                   </div>
                   <div class="col-md-6">
-                    <label>Kategoriya:</label>
+                    <label>Mahsulot turi:</label>
+                    <h5>{{ product.categoryName }}</h5>
+                    <br>
+                    <label>Kategoriyasi:</label>
                     <h5>{{ product.subcategoryName }}</h5>
                     <br />
                     <label>Admin:</label>
