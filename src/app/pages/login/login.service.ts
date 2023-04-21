@@ -46,7 +46,7 @@ export class LoginService {
                   }break;
                   case 401: {
                     localStorage.clear();
-                    this.toastr.error("Token expired!")
+                    this.toastr.error("Token expired!");
                   } break;
                   case 0: {
                     this.toastr.error("Internal server error!", '', {

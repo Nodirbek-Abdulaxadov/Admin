@@ -11,4 +11,6 @@ export interface Product {
     categoryName: string;
     adminId: string;
     adminFullName: string;
+    addedDate: Date;
+    modifiedDate: Date;
 }

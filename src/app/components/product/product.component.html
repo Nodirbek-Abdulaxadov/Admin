@@ -19,12 +19,17 @@
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td colspan="7" *ngIf="pagination!.TotalPages == 0">
+              <h5 class="text-center">Jadval bo'sh!</h5>
+            </td>
+          </tr>
           <tr *ngFor="let item of products | async">
             <td>{{ item.barcode }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.madeIn }}</td>
             <td>{{ item.categoryName }}</td>
-            <td>{{item.subcategoryName}}</td>
+            <td>{{ item.subcategoryName }}</td>
             <td>{{ item.adminFullName }}</td>
             <td>
               <div class="table-actions d-flex align-items-center gap-3 fs-6">
@@ -37,9 +42,12 @@
                 >
                   <i class="bi bi-eye-fill p-0 m-0"></i>
                 </button>
-                <button class="btn btn-warning">
+                <a
+                  class="btn btn-warning"
+                  [routerLink]="['/product/edit', item.id]"
+                >
                   <i class="bi bi-pencil-fill m-0 p-0"></i>
-                </button>
+                </a>
                 <button
                   class="btn btn-secondary"
                   data-bs-toggle="tooltip"
@@ -135,11 +143,16 @@
                     <label>Ogohlantirish soni:</label>
                     <h5>{{ product.warningCount }}</h5>
                     <br />
+                    <label>Yaratilgan vaqti:</label>
+                    <h5>
+                      {{ product.addedDate | date : "MM/dd/YYYY h:mm a z" }}
+                    </h5>
+                    <br />
                   </div>
                   <div class="col-md-6">
                     <label>Mahsulot turi:</label>
                     <h5>{{ product.categoryName }}</h5>
-                    <br>
+                    <br />
                     <label>Kategoriyasi:</label>
                     <h5>{{ product.subcategoryName }}</h5>
                     <br />
@@ -148,6 +161,11 @@
                     <br />
                     <label>Izoh:</label>
                     <h5>{{ product.description }}</h5>
+                    <br />
+                    <label>Oxirgi tahrirlangan vaqti:</label>
+                    <h5>
+                      {{ product.modifiedDate | date : "MM/dd/YYYY h:mm a z" }}
+                    </h5>
                     <br />
                   </div>
                 </div>

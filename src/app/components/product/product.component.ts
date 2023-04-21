@@ -25,6 +25,8 @@ export class ProductComponent implements OnInit {
     categoryName: '',
     adminId: '',
     adminFullName: '',
+    addedDate: new Date(),
+    modifiedDate: new Date()
   };
 
   constructor(private productService: ProductService) {}
@@ -37,7 +39,9 @@ export class ProductComponent implements OnInit {
     this.product = product;
   }
 
-  remove(id: number) {}
+  remove(id: number) {
+    this.productService.remove(id);
+  }
 
   paging(pageNumber: number) {
     this.products = this.productService.getPaged(pageNumber);

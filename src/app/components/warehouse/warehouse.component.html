@@ -76,8 +76,8 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="5" *ngIf="(warehouses | async)!.length == 0">
-              Jadval bo'sh!
+            <td colspan="5" *ngIf="pagination!.TotalPages== 0">
+              <h5 class="text-center">Jadval bo'sh!</h5>
             </td>
           </tr>
           <tr *ngFor="let item of warehouses | async">

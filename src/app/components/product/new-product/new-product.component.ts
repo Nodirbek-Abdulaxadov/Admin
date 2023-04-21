@@ -30,6 +30,8 @@ export class NewProductComponent implements OnInit, AfterViewInit {
   subcategoriesFilter: Subcategory[] = [];
   categories: Category[] = [];
   barcodeIsClean: boolean = true;
+  subcategoryIsEmpty: boolean = true;
+  firstSubcategory: number = 0;
 
   ngOnInit(): void {
     this.subcategoryService.getAll().subscribe(data => {
@@ -106,6 +108,14 @@ export class NewProductComponent implements OnInit, AfterViewInit {
   categorySelected() {
     var categoryId = this.addNewForm.getRawValue().categoryId;
     this.subcategoriesFilter = this.subcategories.filter(s => s.categoryId == Number(categoryId))
+    var subcategorSelect = document.getElementById('subcategoryId') as HTMLSelectElement;
+    if (this.subcategoriesFilter.length > 0 && subcategorSelect.value != null) {
+      this.firstSubcategory = this.subcategoriesFilter[0].id;
+      this.subcategoryIsEmpty = false;
+    }else {
+      this.subcategoryIsEmpty = true;
+      this.firstSubcategory = 0;
+    }
   }
 
   add() {

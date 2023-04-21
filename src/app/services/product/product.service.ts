@@ -9,16 +9,17 @@ import { TokenService } from '../helpers/token.service';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
+  constructor(
+    private httpClient: HttpClient,
+    private toastr: ToastrService,
+    private tokenService: TokenService,
+    private router: Router
+  ) {}
 
-  constructor(private httpClient: HttpClient, 
-              private toastr: ToastrService,
-              private tokenService: TokenService,
-              private router: Router) {}
-
-  baseUrl: string = Constants.BASE_URL + "product/";
+  baseUrl: string = Constants.BASE_URL + 'product/';
 
   public pagination: Pagination = {
     HasPrevious: false,
@@ -37,6 +38,14 @@ export class ProductService {
     return this.httpClient.get<Product[]>(this.baseUrl, { headers });
   }
 
+  getById(id: number): Observable<Product> {
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()}`
+    );
+    return this.httpClient.get<Product>(this.baseUrl + id, { headers });
+  }
+
   getPaged(pageNumber: number): Observable<Product[]> {
     const headers = new HttpHeaders().set(
       'Authorization',
@@ -47,11 +56,11 @@ export class ProductService {
 
     return this.httpClient.get<any>(url, { headers, observe: 'response' }).pipe(
       map((response) => {
-        const warehouses = response.body as Product[];
+        const products = response.body as Product[];
         const paginationHeader = response.headers.get('x-pagination');
         var xpagination = JSON.parse(paginationHeader ?? '');
         this.initPaginationParams(xpagination);
-        return warehouses;
+        return products;
       })
     );
   }
@@ -61,13 +70,51 @@ export class ProductService {
       'Authorization',
       `Bearer ${this.getToken()}`
     );
-    form.adminId = this.tokenService.getUserId()
+    form.adminId = this.tokenService.getUserId();
     this.httpClient.post(this.baseUrl, form, { headers }).subscribe({
       next: (data) => {
         this.toastr
           .success("Muvofaqqiyatli qo'shildi!")
           .onHidden.subscribe(() => {
-            this.router.navigate(['/product'])
+            this.router.navigate(['/product']);
+          });
+      },
+      error: (error) => {
+        this.toastr.error('Qandaydir xatolik yuz berdi!', '', {
+          timeOut: 3000,
+        });
+      },
+    });
+    localStorage.setItem('barcode', '');
+  }
+
+  remove(id: number) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`);
+    this.httpClient.delete(this.baseUrl + id, {headers}).subscribe({ 
+      next: data => {
+        this.toastr.success("Muvofaqqiyatli o'chirildi!").onHidden.subscribe(() => {
+          window.location.reload();
+        });
+        },
+      error: error => {
+          this.toastr.error("Qandaydir xatolik yuz berdi!",'', {timeOut: 3000});
+        }});
+  }
+
+  edit(form: any) {
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()}`
+    );
+    form.adminId = this.tokenService.getUserId();
+
+    this.httpClient.put(this.baseUrl, form, { headers }).subscribe({
+      next: (data) => {
+        localStorage.setItem('barcode', '');
+        this.toastr
+          .success("Muvofaqqiyatli tahrirlandi!")
+          .onHidden.subscribe(() => {
+            this.router.navigate(['/product']);
           });
       },
       error: (error) => {
@@ -84,7 +131,9 @@ export class ProductService {
       'Authorization',
       `Bearer ${this.getToken()}`
     );
-    return this.httpClient.get<string>(this.baseUrl + 'barcodes/random', { headers });
+    return this.httpClient.get<string>(this.baseUrl + 'barcodes/random', {
+      headers,
+    });
   }
 
   initPaginationParams(xpagination: any): void {

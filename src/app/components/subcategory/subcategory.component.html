@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between">
-    <h4 class="mb-0 text-uppercase mt-2">Subkategoriyalar jadvali</h4>
+    <h4 class="mb-0 text-uppercase mt-2">Kategoriyalar jadvali</h4>
     <button
       class="btn btn-success"
       data-bs-toggle="modal"
@@ -19,7 +19,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content" style="background-color: #fff">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="addNewl">Yangi subkategoriya qo'shish</h1>
+          <h1 class="modal-title fs-5" id="addNewl">Yangi kategoriya qo'shish</h1>
           <button
             type="button"
             class="btn-close"
@@ -33,18 +33,19 @@
           class="modal-body"
         >
         <div class="mb-1 mt-3">
-          <label class="form-label">Kategoriyasi</label>
+          <label class="form-label">Mahsulot turi</label>
           <select class="form-select" formControlName="categoryId">
+            <option value="null" disabled >-- Tanlang --</option>
             <option value="{{category.id}}" *ngFor="let category of categories">{{category.name}}</option>
           </select>
-          <div *ngIf="categoryId.errors?.['required']" class="form-text text-danger">Kategoriyani tanlang!</div>            
+          <div *ngIf="categoryId.errors?.['required']" class="form-text text-danger">Mahsulot turini tanlang!</div>            
         </div>
           <div class="mb-5 mt-3">
             <label class="form-label">Nomi</label>
             <input
               type="text"
               class="form-control"
-              placeholder="Ombor nomini kiriting"
+              placeholder="Kategoriya nomini kiriting"
               ngModel
               formControlName="name"
             />
@@ -84,8 +85,8 @@
           </thead>
           <tbody>
             <tr>
-              <td colspan="5" *ngIf="(subcategories | async)!.length == 0">
-                Jadval bo'sh!
+              <td colspan="6" *ngIf="pagination!.TotalPages == 0">
+                <h5 class="text-center">Jadval bo'sh!</h5>
               </td>
             </tr>
             <tr *ngFor="let item of subcategories | async">

@@ -10,6 +10,7 @@ import { NewProductComponent } from './components/product/new-product/new-produc
 import { ServerErrorComponent } from './pages/server-error/server-error.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PrintComponent } from './pages/print/print.component';
+import { EditProductComponent } from './components/product/edit-product/edit-product.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'subcategory', component: SubcategoryComponent},
   {path: 'product', component: ProductComponent},
   {path: 'product/add', component: NewProductComponent},
+  {path: 'product/edit/:productId', component: EditProductComponent},
   {path: 'print/:barcode', component: PrintComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', component: NotFoundComponent}

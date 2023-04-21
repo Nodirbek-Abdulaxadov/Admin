@@ -198,3 +198,8 @@
 .nimadir a {
     border-radius: 0px !important;
 }
+
+.links a {
+  width: 130px;
+  margin: 0px 5px;
+}
