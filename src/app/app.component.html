@@ -332,9 +332,9 @@
               </li>
               <li> <a routerLink="/subcategory"><i class="bi bi-bar-chart-steps"></i>Kategoriyalar</a>
               </li>
-              <li> <a routerLink="/product"><i class="bi bi-bag-fill"></i>Mahsulotlar</a>
+              <li> <a [routerLink]="['/product', 1]"><i class="bi bi-bag-fill"></i>Mahsulotlar</a>
               </li>
-              <li> <a routerLink="/purchase"><i class="bi bi-bag-plus-fill"></i>Kirimlar</a>
+              <li> <a routerLink="/warehouse-items"><i class="bi bi-bag-plus-fill"></i>Kirimlar</a>
               </li>
               <li> <a routerLink="/transfers"><i class="bi bi-arrow-repeat"></i>O'tkazmalar</a>
               </li>
@@ -346,7 +346,7 @@
               <div class="menu-title">Savdo</div>
             </a>
             <ul>
-              <li> <a routerLink="/sells"><i class="bi bi-cart-check"></i>Sotuvlar</a>
+              <li> <a routerLink="/sales"><i class="bi bi-cart-check"></i>Sotuvlar</a>
               </li>
               <li> <a routerLink="/price-management"><i class="bi bi-currency-dollar"></i>Narxlarni boshqarish</a>
               </li>
@@ -392,11 +392,9 @@
               <div class="menu-title">Hodimlar</div>
             </a>
             <ul>
-              <li> <a routerLink="/hd1"><i class="bi bi-house-fill"></i>Omborlar</a>
+              <li> <a [routerLink]="['users/admin']"><i class="bi bi-person-lines-fill"></i>Adminlar</a>
               </li>
-              <li> <a routerLink="/hd2"><i class="bi bi-menu-button-wide"></i>Mahsulot turlari</a>
-              </li>
-              <li> <a routerLink="/hd3"><i class="bi bi-bar-chart-steps"></i>Kategoriyalar</a>
+              <li> <a [routerLink]="['users/seller']"><i class="bi bi-person-circle"></i>Sotuvchilar</a>
               </li>
             </ul>
           </li>

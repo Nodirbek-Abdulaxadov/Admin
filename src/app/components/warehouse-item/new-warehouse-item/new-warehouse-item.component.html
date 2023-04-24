@@ -1,0 +1,169 @@
+<div class="container">
+  <div class="card">
+    <h3 class="card-header">Yangi kirim qo'shish</h3>
+    <div class="card-body">
+      <form [formGroup]="addNewForm" class="modal-body">
+        <h5 class="text-center text-danger d-none" id="productIdErrorMessage">Mahsulotni tanlang!</h5>
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <div class="mb-3 mt-1">
+              <label class="form-label" style="font-size: 16px;">Barcode orqali qo'shish</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="000000000000"
+                ngModel
+                id="barcodeInput"
+                (keydown)="scanned($event)"
+                formControlName="barcode"
+              />
+            </div>
+            <div class="d-flex justify-content-center mb-4">
+              <button class="btn btn-primary mx-2" (click)="focusOnScan()">
+                <i class="bi bi-upc-scan me-2"></i>Scanerlash
+              </button>
+              <a class="btn btn-secondary" (click)="clearbarcode()">
+                <i class="bi bi-arrow-counterclockwise me-2"></i> Tozalash
+              </a>
+            </div>
+            <div class="mb-3 mt-4">
+              <label class="form-label" style="font-size: 16px;">Mahsulot nomi bo'yicha qo'shish</label>
+              <input
+                type="search"
+                list="products"
+                class="form-control"
+                id="productSearchText"
+              />
+              <datalist id="products">
+                <option *ngFor="let product of products" [value]="product.name"></option>
+              </datalist>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-success mx-2" (click)="selectByName()">
+                <i class="bi bi-plus-circle me-2"></i>Qo'shish
+              </button>
+              <a class="btn btn-secondary" (click)="clearsearch()">
+                <i class="bi bi-arrow-counterclockwise me-2"></i> Tozalash
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="container product-div">
+              <label>Nomi:</label>
+              <h5 id="pname">{{ selectedProduct.name }}</h5>
+              <hr />
+              <label>Ishlab chiqarilgan joyi:</label>
+              <h5 id="pmadeIn">{{ selectedProduct.madeIn }}</h5>
+              <hr />
+              <label>Mahsulot turi:</label>
+              <h5 id="pcategoryName">{{ selectedProduct.categoryName }}</h5>
+              <hr />
+              <label>Kategoriyasi:</label>
+              <h5 id="psubcategoryName">{{ selectedProduct.subcategoryName }}</h5>
+              <hr />
+              <label>Izoh:</label>
+              <h5 id="description">{{ selectedProduct.description }}</h5>
+              <hr>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-1 mt-3">
+              <label class="form-label">Ombor</label>
+              <select class="form-select" formControlName="warehouseId">
+                <option value="null" disabled>
+                  -- Omborni tanlang --
+                </option>
+                <option
+                  *ngFor="let warehouse of warehouses"
+                  value="{{ warehouse.id }}"
+                >
+                  {{ warehouse.name }}
+                </option>
+              </select>
+              <div
+                *ngIf="warehouseId.errors?.['required']"
+                class="form-text text-danger"
+              >
+                Ombor tanlang!
+              </div>
+            </div>
+            <div class="mb-3 mt-3">
+              <label class="form-label">Miqdori</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Mahsulot miqdorini kiriting"
+                ngModel
+                formControlName="quantity"
+              />
+              <div *ngIf="quantity.errors?.['required']"
+                  class="form-text text-danger">
+                  Maydonni to'ldiring!
+              </div>
+            </div>
+            <div class="mb-3 mt-3">
+              <label class="form-label">Olib kelingan sanani kiriting</label>
+              <input
+                type="date"
+                class="form-control"
+                ngModel
+                formControlName="broughtDate"
+              />
+              <div *ngIf="broughtDate.errors?.['required']"
+                  class="form-text text-danger">
+                  Maydonni to'ldiring!
+             </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3 mt-3">
+              <label class="form-label">Olish narxi</label>
+              <input
+                type="number"
+                class="form-control"
+                ngModel
+                formControlName="incomingPrice"
+              />
+              <div *ngIf="incomingPrice.errors?.['required']"
+                  class="form-text text-danger" >
+                   Maydonni to'ldiring!
+              </div>
+            </div>
+            <div class="mb-3 mt-3">
+              <label class="form-label">Sotish narxi</label>
+              <input
+                type="number"
+                class="form-control"
+                ngModel
+                formControlName="sellingPrice"
+              />
+              <div *ngIf="sellingPrice.errors?.['required']"
+                  class="form-text text-danger" >
+                   Maydonni to'ldiring!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-secondary" routerLink="..">
+            Orqaga
+          </button>
+          <button
+            [disabled]="!addNewForm.valid"
+            type="submit"
+            class="btn btn-primary"
+            (click)="add()"
+          >
+            Saqlash
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

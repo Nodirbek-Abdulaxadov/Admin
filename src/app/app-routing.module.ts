@@ -11,6 +11,12 @@ import { ServerErrorComponent } from './pages/server-error/server-error.componen
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PrintComponent } from './pages/print/print.component';
 import { EditProductComponent } from './components/product/edit-product/edit-product.component';
+import { WarehouseItemComponent } from './components/warehouse-item/warehouse-item.component';
+import { NewWarehouseItemComponent } from './components/warehouse-item/new-warehouse-item/new-warehouse-item.component';
+import { EditWarehouseItemComponent } from './components/warehouse-item/edit-warehouse-item/edit-warehouse-item.component';
+import { CustomerComponent } from './components/customer/customer.component';
+import { UserComponent } from './components/user/user.component';
+import { SellerComponent } from './components/seller/seller.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,10 +24,16 @@ const routes: Routes = [
   {path: 'server-error', component: ServerErrorComponent},
   {path: 'category', component: CategoryComponent},
   {path: 'subcategory', component: SubcategoryComponent},
-  {path: 'product', component: ProductComponent},
+  {path: 'product/:page', component: ProductComponent},
   {path: 'product/add', component: NewProductComponent},
   {path: 'product/edit/:productId', component: EditProductComponent},
   {path: 'print/:barcode', component: PrintComponent},
+  {path: 'warehouse-items', component: WarehouseItemComponent},
+  {path: 'warehouse-items/add', component: NewWarehouseItemComponent},
+  {path: 'warehouse-item/edit/:warehouseItemId', component: EditWarehouseItemComponent},
+  {path: 'customers', component: CustomerComponent},
+  {path: 'users/admin', component: UserComponent},
+  {path: 'users/seller', component: SellerComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', component: NotFoundComponent}
 ];

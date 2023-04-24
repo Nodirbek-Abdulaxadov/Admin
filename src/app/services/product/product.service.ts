@@ -52,7 +52,7 @@ export class ProductService {
       `Bearer ${this.getToken()}`
     );
 
-    const url = `${this.baseUrl}paged?pageSize=5&pageNumber=${pageNumber}`;
+    const url = `${this.baseUrl}paged?pageSize=10&pageNumber=${pageNumber}`;
 
     return this.httpClient.get<any>(url, { headers, observe: 'response' }).pipe(
       map((response) => {

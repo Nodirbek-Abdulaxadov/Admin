@@ -1,0 +1,104 @@
+<div class="d-flex justify-content-between">
+    <h4 class="mb-0 text-uppercase mt-2">Adminlar jadvali</h4>
+    </div>
+  <hr />
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Ism Familiya</th>
+              <th>Tel raqam</th>
+              <th>Lavozimi</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="5" *ngIf="(users | async)!.length== 0">
+                <h5 class="text-center">Jadval bo'sh!</h5>
+              </td>
+            </tr>
+            <tr *ngFor="let item of users | async">
+              <td>{{ item.fullName }}</td>
+              <td>{{ item.phoneNumber}}</td>
+              <td>{{ item.role }}</td>
+              <td>
+                <div class="table-actions d-flex align-items-center gap-3 fs-6">
+                  <button
+                    class="btn btn-secondary"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="bottom"
+                    title="Arxivlash"
+                  >
+                  <i class="bi bi-archive p-0 m-0" ></i>
+                  </button>
+                  <button
+                    class="btn btn-warning"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editModal"
+                  >
+                    <i class="bi bi-pencil-fill m-0 p-0"></i>
+                  </button>
+  
+                  <button
+                    class="btn btn-danger"
+                    data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#exampleDangerModal' + item.id"
+                  >
+                    <i class="bi bi-trash-fill m-0 p-0"></i>
+                  </button>
+                  <div class="col">
+                    <!-- Modal -->
+                    <div
+                      class="modal fade"
+                      id="exampleDangerModal{{ item.id }}"
+                      tabindex="-1"
+                      aria-hidden="true"
+                    >
+                      <div class="modal-dialog">
+                        <div class="modal-content bg-danger">
+                          <div class="modal-header">
+                            <h5 class="modal-title text-white">O'chirish</h5>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div class="modal-body text-white">
+                            <p>Rostdan ham o'chirmoqchimisiz?</p>
+                          </div>
+                          <div class="modal-footer gap-3 fs-6">
+                            <button
+                              type="button"
+                              style="width: 100px"
+                              class="btn btn-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Yo'q
+                            </button>
+                            <button
+                              data-bs-dismiss="modal"
+                              type="button"
+                              style="width: 100px"
+                              class="btn btn-primary"
+                            >
+                              Ha
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

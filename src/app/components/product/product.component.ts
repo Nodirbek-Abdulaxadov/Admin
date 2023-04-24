@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Pagination } from 'src/app/models/Pagination';
 import { Product } from 'src/app/models/Product';
@@ -29,10 +30,17 @@ export class ProductComponent implements OnInit {
     modifiedDate: new Date()
   };
 
-  constructor(private productService: ProductService) {}
+  public page: number = 0;
+
+  constructor(private productService: ProductService,
+              private actRoute: ActivatedRoute,
+              private router: Router,
+              private cdrf: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.paging(1);
+    const routeParams = this.actRoute.snapshot.paramMap;
+    this.page = Number(routeParams.get('page')??1);
+    this.paging(this.page);
   }
 
   onProductSelect(product: Product) {
@@ -44,7 +52,9 @@ export class ProductComponent implements OnInit {
   }
 
   paging(pageNumber: number) {
+    pageNumber = Math.round(pageNumber);
     this.products = this.productService.getPaged(pageNumber);
     this.pagination = this.productService.pagination;
+    this.router.navigate(['/product', pageNumber]);
   }
 }
