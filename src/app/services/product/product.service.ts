@@ -143,6 +143,8 @@ export class ProductService {
     this.pagination.CurrentPage = xpagination['CurrentPage'];
     this.pagination.PageSize = xpagination['PageSize'];
     this.pagination.TotalPages = xpagination['TotalPages'];
+
+    localStorage.setItem('pagination', JSON.stringify(this.pagination))
   }
 
   getToken() {

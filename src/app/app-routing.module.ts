@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'server-error', component: ServerErrorComponent},
   {path: 'category', component: CategoryComponent},
   {path: 'subcategory', component: SubcategoryComponent},
-  {path: 'product/:page', component: ProductComponent},
+  {path: 'product/page/:page', component: ProductComponent},
   {path: 'product/add', component: NewProductComponent},
   {path: 'product/edit/:productId', component: EditProductComponent},
   {path: 'print/:barcode', component: PrintComponent},

@@ -25,6 +25,7 @@ import { SalesComponent } from './components/sales/sales.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { UserComponent } from './components/user/user.component';
 import { SellerComponent } from './components/seller/seller.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { SellerComponent } from './components/seller/seller.component';
     SalesComponent,
     CustomerComponent,
     UserComponent,
-    SellerComponent
+    SellerComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

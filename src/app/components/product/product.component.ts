@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Pagination } from 'src/app/models/Pagination';
@@ -52,9 +52,17 @@ export class ProductComponent implements OnInit {
   }
 
   paging(pageNumber: number) {
-    pageNumber = Math.round(pageNumber);
-    this.products = this.productService.getPaged(pageNumber);
+    this.page = Math.round(pageNumber);
+
+    if (pageNumber > this.productService.pagination.CurrentPage && pageNumber > 3) {
+      pageNumber -= 1;
+    }
+    else if (pageNumber < this.productService.pagination.CurrentPage && pageNumber > 3) {
+      pageNumber += 1;
+    }
+
+    this.products = this.productService.getPaged(this.page);
     this.pagination = this.productService.pagination;
-    this.router.navigate(['/product', pageNumber]);
+    this.router.navigate(['/product/page', this.page]);
   }
 }
