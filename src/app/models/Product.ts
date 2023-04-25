@@ -4,6 +4,7 @@ export interface Product {
     description: string;
     madeIn: string;
     barcode: string;
+    quantity: number;
     warningCount: number;
     subcategoryId: number;
     subcategoryName: string;

@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Pagination } from 'src/app/models/Pagination';
@@ -26,6 +26,7 @@ export class ProductComponent implements OnInit {
     categoryName: '',
     adminId: '',
     adminFullName: '',
+    quantity: 0,
     addedDate: new Date(),
     modifiedDate: new Date()
   };

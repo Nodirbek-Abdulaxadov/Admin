@@ -17,6 +17,7 @@ import { EditWarehouseItemComponent } from './components/warehouse-item/edit-war
 import { CustomerComponent } from './components/customer/customer.component';
 import { UserComponent } from './components/user/user.component';
 import { SellerComponent } from './components/seller/seller.component';
+import { TransferComponent } from './components/transfer/transfer.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: 'warehouse-items/add', component: NewWarehouseItemComponent},
   {path: 'warehouse-item/edit/:warehouseItemId', component: EditWarehouseItemComponent},
   {path: 'customers', component: CustomerComponent},
+  {path: 'transfers/page/:page', component: TransferComponent},
   {path: 'users/admin', component: UserComponent},
   {path: 'users/seller', component: SellerComponent},
   {path: 'login', component: LoginComponent},

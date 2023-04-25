@@ -40,6 +40,7 @@ export class EditProductComponent implements OnInit {
     subcategoryId: 0,
     subcategoryName: '',
     categoryId: 0,
+    quantity: 0,
     categoryName: '',
     adminId: '',
     adminFullName: '',
