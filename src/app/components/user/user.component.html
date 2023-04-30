@@ -1,6 +1,77 @@
 <div class="d-flex justify-content-between">
     <h4 class="mb-0 text-uppercase mt-2">Adminlar jadvali</h4>
+    
+  <button
+    class="btn btn-success"
+    data-bs-toggle="modal"
+    data-bs-target="#addNew"
+  >
+    + Yangi qo'shish
+  </button>
+  
+<!-- Modal -->
+<div
+class="modal fade"
+id="addNew"
+tabindex="-1"
+aria-labelledby="addNewl"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content" style="background-color: #fff">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="addNewl">Yangi admin qo'shish</h1>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
     </div>
+    <form
+      [formGroup]="addnewForm"
+      (submit)="addNew()"
+      class="modal-body"
+    >
+      <div class="mb-3 mt-3">
+        <label class="form-label">Ism familiya</label>
+        <input
+          type="text"
+          class="form-control"
+          ngModel
+          formControlName="fullName"
+        />
+        <div *ngIf="fullName.errors?.['required']" class="form-text text-danger">Maydonni to'ldiring!</div>
+        <div *ngIf="fullName.errors?.['minlength'] || fullName.errors?.['maxlength']" class="form-text text-danger">Ism familiya kamida 3 ta ko'pi bilan 100 ta belgidan iborat bo'lishi kerak!</div>
+      </div>
+      <div class="mb-5 mt-1">
+        <label class="form-label">Telefon raqam</label>
+        <input
+          type="tel"
+          class="form-control"
+          ngModel
+          formControlName="phoneNumber"
+        />
+        <div *ngIf="phoneNumber.errors?.['required']" class="form-text text-danger">Maydonni to'ldiring!</div>
+        <div *ngIf="phoneNumber.errors?.['minlength'] || phoneNumber.errors?.['maxlength']" class="form-text text-danger">Tel raqam kamida 3 ta ko'pi bilan 100 ta belgidan iborat bo'lishi kerak!</div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Orqaga
+        </button>
+        <button [disabled]="!addnewForm.valid" type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+          Saqlash
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
   <hr />
   <div class="card">
     <div class="card-body">
