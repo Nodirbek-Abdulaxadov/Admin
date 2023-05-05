@@ -35,8 +35,7 @@ export class ProductComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private actRoute: ActivatedRoute,
-              private router: Router,
-              private cdrf: ChangeDetectorRef) {}
+              private router: Router) {}
 
   ngOnInit(): void {
     const routeParams = this.actRoute.snapshot.paramMap;

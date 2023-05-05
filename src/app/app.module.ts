@@ -26,6 +26,14 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { UserComponent } from './components/user/user.component';
 import { SellerComponent } from './components/seller/seller.component';
 import { TransferComponent } from './components/transfer/transfer.component';
+import { ManagePriceComponent } from './components/manage-price/manage-price.component';
+import { ManageDiscountComponent } from './components/manage-discount/manage-discount.component';
+import { LoanComponent } from './components/loan/loan.component';
+import { SupplierComponent } from './components/supplier/supplier.component';
+import { PartnersComponent } from './components/partners/partners.component';
+import { TaxComponent } from './components/tax/tax.component';
+import { CommunalComponent } from './components/communal/communal.component';
+import { ExpenseComponent } from './components/expense/expense.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +56,15 @@ import { TransferComponent } from './components/transfer/transfer.component';
     CustomerComponent,
     UserComponent,
     SellerComponent,
-    TransferComponent
+    TransferComponent,
+    ManagePriceComponent,
+    ManageDiscountComponent,
+    LoanComponent,
+    SupplierComponent,
+    PartnersComponent,
+    TaxComponent,
+    CommunalComponent,
+    ExpenseComponent
   ],
   imports: [
     BrowserModule,

@@ -144,6 +144,7 @@
                 <button
                   class="btn btn-danger"
                   data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#exampleDangerModal' + item.id"
                 >
                   <i class="bi bi-trash-fill m-0 p-0"></i>
                 </button>
@@ -223,7 +224,8 @@
                     id="fullName"
                   />
                   <div *ngIf="!fullNameIsvalid" class="form-text text-danger">
-                    Ism familiya kamida 3 ta, ko'pi bilan 100 ta belgidan iborat bo'lishi kerak!
+                    Ism familiya kamida 3 ta, ko'pi bilan 100 ta belgidan iborat
+                    bo'lishi kerak!
                   </div>
                 </div>
                 <div class="mb-5">
@@ -236,8 +238,12 @@
                     ngModel
                     id="phoneNumber"
                   />
-                  <div *ngIf="!phoneNumberIsValid" class="form-text text-danger">
-                    Tel raqam kamida 9 ta va ko'pi bilan 15 ta belgidan iborat bo'lishi kerak!
+                  <div
+                    *ngIf="!phoneNumberIsValid"
+                    class="form-text text-danger"
+                  >
+                    Tel raqam kamida 9 ta va ko'pi bilan 15 ta belgidan iborat
+                    bo'lishi kerak!
                   </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">

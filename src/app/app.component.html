@@ -346,15 +346,15 @@
               <div class="menu-title">Savdo</div>
             </a>
             <ul>
-              <li> <a routerLink="/sales"><i class="bi bi-cart-check"></i>Sotuvlar</a>
+              <li> <a [routerLink]="['/sales/page', 1]"><i class="bi bi-cart-check"></i>Sotuvlar</a>
+              </li>
+              <li> <a routerLink="/customers"><i class="bi bi-people-fill"></i>Haridorlar</a>
+              </li>
+              <li> <a [routerLink]="['/loans/', 1]"><i class="bi bi-wallet-fill"></i>Nasiyalar</a>
               </li>
               <li> <a routerLink="/price-management"><i class="bi bi-currency-dollar"></i>Narxlarni boshqarish</a>
               </li>
               <li> <a routerLink="/discount"><i class="bi bi-cash-coin"></i>Chegirmalar</a>
-              </li>
-              <li> <a routerLink="/lend"><i class="bi bi-wallet-fill"></i>Nasiyalar</a>
-              </li>
-              <li> <a routerLink="/customers"><i class="bi bi-people-fill"></i>Haridorlar</a>
               </li>
             </ul>
           </li>
@@ -364,9 +364,9 @@
               <div class="menu-title">Hamkorlar</div>
             </a>
             <ul>
-              <li> <a routerLink="/h1"><i class="bi bi-box"></i>Ta'minotchilar</a>
+              <li> <a routerLink="/partners"><i class="bi bi-box"></i>Ta'minotchilar</a>
               </li>
-              <li> <a routerLink="/h3"><i class="bi bi-cart-fill"></i>Tashuvchilar</a>
+              <li> <a routerLink="/suppliers"><i class="bi bi-cart-fill"></i>Tashuvchilar</a>
               </li>
             </ul>
           </li>
@@ -376,11 +376,11 @@
               <div class="menu-title">Xarajatlar</div>
             </a>
             <ul>
-              <li> <a routerLink="/x1"><i class="bi bi-bank"></i>Soliqlar</a>
+              <li> <a routerLink="/taxes"><i class="bi bi-bank"></i>Soliqlar</a>
               </li>
-              <li> <a routerLink="/x2"><i class="bi bi-cash-coin"></i>Komunal to'lovlar</a>
+              <li> <a routerLink="/communal"><i class="bi bi-cash-coin"></i>Komunal to'lovlar</a>
               </li>
-              <li> <a routerLink="/x3"><i class="bi bi-cash-coin"></i>Boshqa harajatlar</a>
+              <li> <a routerLink="/other-expenses"><i class="bi bi-cash-coin"></i>Boshqa harajatlar</a>
               </li>
             </ul>
           </li>

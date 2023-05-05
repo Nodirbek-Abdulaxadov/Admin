@@ -18,6 +18,15 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { UserComponent } from './components/user/user.component';
 import { SellerComponent } from './components/seller/seller.component';
 import { TransferComponent } from './components/transfer/transfer.component';
+import { SalesComponent } from './components/sales/sales.component';
+import { ManagePriceComponent } from './components/manage-price/manage-price.component';
+import { ManageDiscountComponent } from './components/manage-discount/manage-discount.component';
+import { PartnersComponent } from './components/partners/partners.component';
+import { SupplierComponent } from './components/supplier/supplier.component';
+import { TaxComponent } from './components/tax/tax.component';
+import { CommunalComponent } from './components/communal/communal.component';
+import { ExpenseComponent } from './components/expense/expense.component';
+import { LoanComponent } from './components/loan/loan.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -37,6 +46,15 @@ const routes: Routes = [
   {path: 'users/admin', component: UserComponent},
   {path: 'users/seller', component: SellerComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'sales/page/:page', component: SalesComponent},
+  {path: 'price-management', component: ManagePriceComponent},
+  {path: 'discount', component: ManageDiscountComponent},
+  {path: 'partners', component: PartnersComponent},
+  {path: 'loans/:page', component: LoanComponent},
+  {path: 'suppliers', component: SupplierComponent},
+  {path: 'taxes', component: TaxComponent},
+  {path: 'communal', component: CommunalComponent},
+  {path: 'other-expenses', component: ExpenseComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

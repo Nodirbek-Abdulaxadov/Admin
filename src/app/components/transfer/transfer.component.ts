@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Pagination } from 'src/app/models/Pagination';
 import { Transfer } from 'src/app/models/Transfer';
-import { TransferService } from 'src/app/services/transfer.service';
+import { TransferService } from 'src/app/services/transfer/transfer.service';
 
 @Component({
   selector: 'app-transfer',

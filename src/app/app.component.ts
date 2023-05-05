@@ -17,7 +17,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(private loginService: LoginService,
               private router: Router,
-              private tokenService: TokenService){}
+              private tokenService: TokenService,
+              private toastr: ToastrService){}
 
   ngOnInit(): void {
     this.userName = this.tokenService.getFullname();
@@ -31,6 +32,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   userLogged(): boolean {
     var localdata = localStorage.getItem('data');
     if (localdata != null && localdata != '') {
+      if (this.tokenService.getRole() == "SELLER") {
+        return false;
+      }
       return true;
     }
     else {
