@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Customer } from 'src/app/models/Customer';
 import { Pagination } from 'src/app/models/Pagination';
@@ -16,6 +17,8 @@ export class CustomerComponent implements OnInit {
   public fullNameIsvalid: boolean = true;
   public phoneNumberIsValid: boolean = true;
 
+  public page: number = 1;
+
   customer: Customer = {
     id: 0,
     fullName: '',
@@ -25,10 +28,14 @@ export class CustomerComponent implements OnInit {
   }
 
   constructor(private customerService: CustomerService,
-              private formBuilder: FormBuilder) {}
+              private formBuilder: FormBuilder,
+              private actRoute: ActivatedRoute,
+              private router: Router) {}
 
   ngOnInit(): void {
-    this.paging(1);
+    const routeParams = this.actRoute.snapshot.paramMap;
+    this.page = Number(routeParams.get('page')??1);
+    this.paging(this.page);
   }
 
   fullName = new FormControl('', [
@@ -49,8 +56,18 @@ export class CustomerComponent implements OnInit {
   });
 
   paging(pageNumber: number) {
-    this.customers = this.customerService.getPaged(pageNumber);
+    this.page = Math.round(pageNumber);
+
+    if (pageNumber > this.customerService.pagination.CurrentPage && pageNumber > 3) {
+      pageNumber -= 1;
+    }
+    else if (pageNumber < this.customerService.pagination.CurrentPage && pageNumber > 3) {
+      pageNumber += 1;
+    }
+
+    this.customers = this.customerService.getPaged(this.page);
     this.pagination = this.customerService.pagination;
+    this.router.navigate(['/customers', this.page]);
   }
 
   add() {

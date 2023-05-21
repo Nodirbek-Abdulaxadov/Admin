@@ -3,7 +3,7 @@ export interface TransactionItem {
     Barcode: string;
     ProductId: number;
     ProductName: string;
-    Price: number;
+    ProductPrice: number;
     Quantity: number;
     TotalPrice: number;
     ReceiptId: number;

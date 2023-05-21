@@ -32,8 +32,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   userLogged(): boolean {
     var localdata = localStorage.getItem('data');
     if (localdata != null && localdata != '') {
-      if (this.tokenService.getRole() == "SELLER") {
-        return false;
+      try {
+        if (this.tokenService.getRole() == "SELLER") {
+          return false;
+        }
+      }
+      catch (error){
+        this.logout();
       }
       return true;
     }
@@ -44,6 +49,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   
   logout() {
       localStorage.clear();
+      this.toastr.error("Token expired!");
       this.router.navigate(['/']);
   }
 }

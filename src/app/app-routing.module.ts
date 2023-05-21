@@ -41,7 +41,7 @@ const routes: Routes = [
   {path: 'warehouse-items', component: WarehouseItemComponent},
   {path: 'warehouse-items/add', component: NewWarehouseItemComponent},
   {path: 'warehouse-item/edit/:warehouseItemId', component: EditWarehouseItemComponent},
-  {path: 'customers', component: CustomerComponent},
+  {path: 'customers/:page', component: CustomerComponent},
   {path: 'transfers/page/:page', component: TransferComponent},
   {path: 'users/admin', component: UserComponent},
   {path: 'users/seller', component: SellerComponent},

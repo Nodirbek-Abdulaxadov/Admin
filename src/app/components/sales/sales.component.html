@@ -19,7 +19,7 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="6" *ngIf="pagination!.TotalPages == 0">
+            <td colspan="7" *ngIf="pagination!.TotalPages == 0">
               <h5 class="text-center">Jadval bo'sh!</h5>
             </td>
           </tr>
@@ -99,7 +99,7 @@
                           <td>{{ i + 1 }}</td>
                           <td>{{ item.Barcode }}</td>
                           <td>{{ item.ProductName }}</td>
-                          <td>{{ item.Price }}</td>
+                          <td>{{ item.ProductPrice }}</td>
                           <td>{{ item.Quantity }}</td>
                           <td>{{ item.TotalPrice }}</td>
                         </tr>

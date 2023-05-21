@@ -88,10 +88,12 @@ export class LoginService {
                   timeOut: 3000
                 });
           } else {
-            this.toastr.success('Successfully logged in!');
             localStorage.setItem('loggedDate', this.date2.toString());
             localStorage.setItem('data', JSON.stringify(data));
-            window.location.reload();
+            this.toastr.success('Successfully logged in!')
+              .onHidden.subscribe(() => {
+              window.location.reload();
+            });
           }
         },
         error: (error) => {
@@ -112,7 +114,6 @@ export class LoginService {
                 this.toastr.error('Internal server error!', '', {
                   timeOut: 3000,
                 });
-                //this.router.navigate(['/server-error']);
               }
               break;
           }
